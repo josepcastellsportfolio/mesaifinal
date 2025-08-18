@@ -1,0 +1,101 @@
+/* Loading Spinner Styles */
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.spinner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spinner-message {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+}
+
+/* Overlay Styles */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading-overlay .loading-spinner {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+}
+
+/* Page Loader Styles */
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  width: 100%;
+}
+
+/* Custom Spinner Styles */
+.spinner {
+  display: inline-block;
+  position: relative;
+}
+
+.spinner-circle {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0078d4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-small .spinner-circle {
+  width: 20px;
+  height: 20px;
+}
+
+.spinner-medium .spinner-circle {
+  width: 32px;
+  height: 32px;
+}
+
+.spinner-large .spinner-circle {
+  width: 48px;
+  height: 48px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .loading-spinner {
+    padding: 1rem;
+  }
+  
+  .spinner-message {
+    font-size: 0.8rem;
+  }
+  
+  .loading-overlay .loading-spinner {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+}
+

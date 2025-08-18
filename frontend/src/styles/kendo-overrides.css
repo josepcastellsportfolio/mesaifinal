@@ -1,0 +1,423 @@
+/**
+ * Kendo UI Overrides
+ * Custom styles to integrate Kendo components with our design system
+ */
+
+/* === KENDO DRAWER CUSTOMIZATIONS === */
+.k-drawer-container {
+  height: 100vh !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: var(--z-index-fixed) !important;
+}
+
+.k-drawer-content {
+  height: 100vh !important;
+  overflow: hidden !important;
+  background-color: var(--color-sidebar-bg);
+}
+
+.k-drawer-items {
+  padding: 0;
+  background-color: var(--color-sidebar-bg);
+}
+
+/* === KENDO APPBAR CUSTOMIZATIONS === */
+.k-appbar {
+  background-color: var(--color-surface-primary);
+  border-bottom: var(--border-divider);
+  box-shadow: var(--shadow-header);
+  padding: 0 var(--spacing-4);
+  min-height: var(--spacing-header-height);
+}
+
+.k-appbar .k-button {
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  padding: var(--spacing-2);
+  border-radius: var(--border-radius-button);
+  transition: var(--transition-fast);
+}
+
+.k-appbar .k-button:hover {
+  background-color: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+}
+
+.k-appbar .k-button:focus {
+  box-shadow: var(--shadow-input-focus);
+  outline: none;
+}
+
+/* === KENDO BUTTON CUSTOMIZATIONS === */
+.k-button {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  border-radius: var(--border-radius-button);
+  padding: var(--spacing-button-padding-y) var(--spacing-button-padding-x);
+  transition: var(--transition-fast);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  text-decoration: none;
+  border: var(--border-button);
+}
+
+.k-button-solid-primary {
+  background-color: var(--color-primary-500);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary-500);
+}
+
+.k-button-solid-primary:hover {
+  background-color: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.k-button-solid-primary:active {
+  background-color: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+  box-shadow: var(--shadow-button-active);
+  transform: translateY(1px);
+}
+
+.k-button-solid-primary:focus {
+  box-shadow: var(--shadow-input-focus);
+  outline: none;
+}
+
+.k-button-outline-primary {
+  background-color: transparent;
+  color: var(--color-primary-600);
+  border-color: var(--color-primary-500);
+}
+
+.k-button-outline-primary:hover {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+  border-color: var(--color-primary-600);
+}
+
+.k-button-flat {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-color: transparent;
+}
+
+.k-button-flat:hover {
+  background-color: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+}
+
+/* Button sizes */
+.k-button-sm {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-button-padding-sm-y) var(--spacing-button-padding-sm-x);
+}
+
+.k-button-lg {
+  font-size: var(--font-size-lg);
+  padding: var(--spacing-button-padding-lg-y) var(--spacing-button-padding-lg-x);
+}
+
+/* === KENDO CARD CUSTOMIZATIONS === */
+.k-card {
+  background-color: var(--color-surface-primary);
+  border: var(--border-card);
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-fast);
+}
+
+.k-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.k-card-header {
+  background-color: var(--color-surface-primary);
+  border-bottom: var(--border-divider);
+  padding: var(--spacing-card-padding);
+  border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
+}
+
+.k-card-title {
+  font-size: var(--heading-h4-size);
+  font-weight: var(--heading-h4-weight);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.k-card-body {
+  padding: var(--spacing-card-padding);
+  color: var(--color-text-primary);
+}
+
+.k-card-footer {
+  background-color: var(--color-surface-secondary);
+  border-top: var(--border-divider);
+  padding: var(--spacing-card-padding);
+  border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
+}
+
+/* === KENDO FORM CUSTOMIZATIONS === */
+.k-form-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-6) 0;
+}
+
+.k-form-legend {
+  font-size: var(--heading-h5-size);
+  font-weight: var(--heading-h5-weight);
+  color: var(--color-text-primary);
+  padding: 0;
+  margin-bottom: var(--spacing-4);
+}
+
+.k-form-field {
+  margin-bottom: var(--spacing-5);
+}
+
+.k-form-field:last-child {
+  margin-bottom: 0;
+}
+
+.k-label {
+  font-size: var(--label-size);
+  font-weight: var(--label-weight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-1);
+  display: block;
+}
+
+.k-form-error {
+  color: var(--color-danger-600);
+  font-size: var(--caption-size);
+  margin-top: var(--spacing-1);
+  display: block;
+}
+
+/* === KENDO INPUT CUSTOMIZATIONS === */
+.k-textbox,
+.k-input,
+.k-textarea {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-primary);
+  border: var(--border-input);
+  border-radius: var(--border-radius-input);
+  padding: var(--spacing-input-padding-y) var(--spacing-input-padding-x);
+  transition: var(--transition-fast);
+  width: 100%;
+}
+
+.k-textbox:focus,
+.k-input:focus,
+.k-textarea:focus {
+  border-color: var(--border-color-focus);
+  box-shadow: var(--shadow-input-focus);
+  outline: none;
+}
+
+.k-textbox::placeholder,
+.k-input::placeholder,
+.k-textarea::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.k-invalid .k-textbox,
+.k-invalid .k-input,
+.k-invalid .k-textarea {
+  border-color: var(--border-color-error);
+}
+
+.k-invalid .k-textbox:focus,
+.k-invalid .k-input:focus,
+.k-invalid .k-textarea:focus {
+  box-shadow: var(--shadow-input-error);
+}
+
+/* === KENDO GRID CUSTOMIZATIONS === */
+.k-grid {
+  border: var(--border-card);
+  border-radius: var(--border-radius-card);
+  background-color: var(--color-surface-primary);
+  box-shadow: var(--shadow-card);
+  font-family: var(--font-family-sans);
+}
+
+.k-grid-header {
+  background-color: var(--color-surface-secondary);
+  border-bottom: var(--border-divider);
+}
+
+.k-grid-header th {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-right: var(--border-divider);
+  text-align: left;
+}
+
+.k-grid-header th:last-child {
+  border-right: none;
+}
+
+.k-grid-content {
+  background-color: var(--color-surface-primary);
+}
+
+.k-grid-content td {
+  padding: var(--spacing-3) var(--spacing-4);
+  border-right: var(--border-divider);
+  border-bottom: var(--border-divider);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+}
+
+.k-grid-content td:last-child {
+  border-right: none;
+}
+
+.k-grid-content tr:hover {
+  background-color: var(--color-surface-secondary);
+}
+
+.k-grid-content tr:last-child td {
+  border-bottom: none;
+}
+
+/* === KENDO CHART CUSTOMIZATIONS === */
+.k-chart {
+  background-color: transparent;
+  font-family: var(--font-family-sans);
+}
+
+.k-chart .k-chart-title {
+  font-size: var(--heading-h5-size);
+  font-weight: var(--heading-h5-weight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-4);
+}
+
+.k-chart .k-chart-legend {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* === KENDO AVATAR CUSTOMIZATIONS === */
+.k-avatar {
+  border-radius: var(--border-radius-avatar);
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+  font-weight: var(--font-weight-medium);
+  border: 2px solid var(--color-surface-primary);
+}
+
+.k-avatar-sm {
+  width: 32px;
+  height: 32px;
+  font-size: var(--font-size-sm);
+}
+
+.k-avatar-md {
+  width: 40px;
+  height: 40px;
+  font-size: var(--font-size-base);
+}
+
+.k-avatar-lg {
+  width: 56px;
+  height: 56px;
+  font-size: var(--font-size-lg);
+}
+
+/* === KENDO LOADING INDICATOR CUSTOMIZATIONS === */
+.k-loading-mask {
+  background-color: var(--color-bg-overlay);
+}
+
+.k-loading-image {
+  border-top-color: var(--color-primary-500);
+}
+
+/* === KENDO TOOLTIP CUSTOMIZATIONS === */
+.k-tooltip {
+  background-color: var(--color-neutral-800);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-tooltip);
+  font-size: var(--caption-size);
+  padding: var(--spacing-2) var(--spacing-3);
+  z-index: var(--z-index-tooltip);
+}
+
+/* === KENDO DROPDOWN CUSTOMIZATIONS === */
+.k-popup {
+  background-color: var(--color-surface-primary);
+  border: var(--border-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-dropdown);
+  z-index: var(--z-index-dropdown);
+}
+
+.k-list-item {
+  padding: var(--spacing-2) var(--spacing-3);
+  color: var(--color-text-primary);
+  transition: var(--transition-fast);
+}
+
+.k-list-item:hover {
+  background-color: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+}
+
+.k-list-item.k-selected {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+  .k-card-header,
+  .k-card-body,
+  .k-card-footer {
+    padding: var(--spacing-card-padding-sm);
+  }
+
+  .k-grid-header th,
+  .k-grid-content td {
+    padding: var(--spacing-2) var(--spacing-3);
+    font-size: var(--font-size-sm);
+  }
+
+  .k-button {
+    padding: var(--spacing-button-padding-sm-y) var(--spacing-button-padding-sm-x);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* === DARK THEME ADJUSTMENTS === */
+@media (prefers-color-scheme: dark) {
+  .k-tooltip {
+    background-color: var(--color-neutral-700);
+    color: var(--color-text-primary);
+  }
+
+  .k-avatar {
+    background-color: var(--color-primary-900);
+    color: var(--color-primary-100);
+    border-color: var(--color-surface-primary);
+  }
+}

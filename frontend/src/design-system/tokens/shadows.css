@@ -1,0 +1,134 @@
+/**
+ * Design Tokens - Shadows
+ * Consistent shadow system for depth and elevation
+ */
+
+:root {
+  /* === SHADOW SCALE === */
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+  /* === ELEVATION SHADOWS === */
+  --shadow-elevation-1: var(--shadow-xs);
+  --shadow-elevation-2: var(--shadow-sm);
+  --shadow-elevation-3: var(--shadow-md);
+  --shadow-elevation-4: var(--shadow-lg);
+  --shadow-elevation-5: var(--shadow-xl);
+  --shadow-elevation-6: var(--shadow-2xl);
+
+  /* === COMPONENT SHADOWS === */
+  --shadow-button: var(--shadow-sm);
+  --shadow-button-hover: var(--shadow-md);
+  --shadow-button-active: var(--shadow-xs);
+
+  --shadow-card: var(--shadow-sm);
+  --shadow-card-hover: var(--shadow-md);
+
+  --shadow-modal: var(--shadow-2xl);
+  --shadow-dropdown: var(--shadow-lg);
+  --shadow-tooltip: var(--shadow-md);
+
+  --shadow-header: var(--shadow-sm);
+  --shadow-sidebar: var(--shadow-lg);
+
+  --shadow-input: var(--shadow-xs);
+  --shadow-input-focus: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  --shadow-input-error: 0 0 0 3px rgba(239, 68, 68, 0.1);
+
+  /* === COLORED SHADOWS === */
+  --shadow-primary: 0 4px 14px 0 rgba(59, 130, 246, 0.15);
+  --shadow-secondary: 0 4px 14px 0 rgba(100, 116, 139, 0.15);
+  --shadow-success: 0 4px 14px 0 rgba(34, 197, 94, 0.15);
+  --shadow-warning: 0 4px 14px 0 rgba(245, 158, 11, 0.15);
+  --shadow-danger: 0 4px 14px 0 rgba(239, 68, 68, 0.15);
+  --shadow-info: 0 4px 14px 0 rgba(6, 182, 212, 0.15);
+
+  /* === GLOW EFFECTS === */
+  --shadow-glow-primary: 0 0 20px rgba(59, 130, 246, 0.3);
+  --shadow-glow-success: 0 0 20px rgba(34, 197, 94, 0.3);
+  --shadow-glow-warning: 0 0 20px rgba(245, 158, 11, 0.3);
+  --shadow-glow-danger: 0 0 20px rgba(239, 68, 68, 0.3);
+  --shadow-glow-info: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+/* === DARK THEME SHADOWS === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* === SHADOW UTILITY CLASSES === */
+
+/* Basic shadows */
+.shadow-none { box-shadow: var(--shadow-none); }
+.shadow-xs { box-shadow: var(--shadow-xs); }
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+.shadow-2xl { box-shadow: var(--shadow-2xl); }
+.shadow-inner { box-shadow: var(--shadow-inner); }
+
+/* Elevation shadows */
+.elevation-1 { box-shadow: var(--shadow-elevation-1); }
+.elevation-2 { box-shadow: var(--shadow-elevation-2); }
+.elevation-3 { box-shadow: var(--shadow-elevation-3); }
+.elevation-4 { box-shadow: var(--shadow-elevation-4); }
+.elevation-5 { box-shadow: var(--shadow-elevation-5); }
+.elevation-6 { box-shadow: var(--shadow-elevation-6); }
+
+/* Colored shadows */
+.shadow-primary { box-shadow: var(--shadow-primary); }
+.shadow-secondary { box-shadow: var(--shadow-secondary); }
+.shadow-success { box-shadow: var(--shadow-success); }
+.shadow-warning { box-shadow: var(--shadow-warning); }
+.shadow-danger { box-shadow: var(--shadow-danger); }
+.shadow-info { box-shadow: var(--shadow-info); }
+
+/* Glow effects */
+.glow-primary { box-shadow: var(--shadow-glow-primary); }
+.glow-success { box-shadow: var(--shadow-glow-success); }
+.glow-warning { box-shadow: var(--shadow-glow-warning); }
+.glow-danger { box-shadow: var(--shadow-glow-danger); }
+.glow-info { box-shadow: var(--shadow-glow-info); }
+
+/* Interactive shadow states */
+.shadow-interactive {
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease;
+}
+
+.shadow-interactive:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-interactive:active {
+  box-shadow: var(--shadow-xs);
+}
+
+/* Focus shadows for form elements */
+.focus-ring {
+  transition: box-shadow 0.2s ease;
+}
+
+.focus-ring:focus {
+  outline: none;
+  box-shadow: var(--shadow-input-focus);
+}
+
+.focus-ring.error:focus {
+  box-shadow: var(--shadow-input-error);
+}

@@ -1,0 +1,259 @@
+/**
+ * Dashboard Component Styles
+ * Specific styles for dashboard components using design tokens
+ */
+
+/* === DASHBOARD PAGE === */
+.dashboard-page {
+  padding: 0;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === DASHBOARD WELCOME === */
+.dashboard-welcome {
+  margin-bottom: var(--spacing-section-padding);
+  flex-shrink: 0;
+}
+
+.dashboard-welcome h1 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--heading-h1-size);
+  font-weight: var(--heading-h1-weight);
+  color: var(--color-text-primary);
+}
+
+.dashboard-welcome p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--body-large-size);
+}
+
+/* === DASHBOARD GRID LAYOUT === */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-section-padding);
+  flex: 1;
+  min-height: 0; /* Important for proper flex behavior */
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-section-padding);
+  min-height: 0; /* Allows proper flex shrinking */
+  overflow: hidden;
+}
+
+.dashboard-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-section-padding);
+  min-height: 0; /* Allows proper flex shrinking */
+}
+
+/* === DASHBOARD CARDS === */
+.dashboard-card {
+  background: var(--color-surface-primary);
+  border: var(--border-card);
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  transition: var(--transition-fast);
+}
+
+.dashboard-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.dashboard-card .k-card-header {
+  border-bottom: var(--border-divider);
+  padding: var(--spacing-card-padding);
+  flex-shrink: 0;
+  background: var(--color-surface-primary);
+}
+
+.dashboard-card .k-card-body {
+  padding: var(--spacing-card-padding);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--color-surface-primary);
+}
+
+.dashboard-card .k-card-title {
+  font-size: var(--heading-h4-size);
+  font-weight: var(--heading-h4-weight);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* === QUICK ACTIONS === */
+.quick-actions {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.quick-action-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: var(--color-surface-primary);
+  border: var(--border-card);
+  border-radius: var(--border-radius-lg);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.quick-action-btn:hover {
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-50);
+  color: var(--color-primary-700);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.quick-action-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.action-icon {
+  font-size: var(--font-size-xl);
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* === CHART CUSTOMIZATIONS === */
+.dashboard-card .k-chart {
+  background: transparent;
+  height: 100%;
+  min-height: 300px;
+}
+
+.dashboard-card .k-chart .k-chart-title {
+  font-size: var(--heading-h5-size);
+  font-weight: var(--heading-h5-weight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-4);
+}
+
+/* === GRID CUSTOMIZATIONS === */
+.dashboard-card .k-grid {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  height: 100%;
+  min-height: 300px;
+}
+
+.dashboard-card .k-grid .k-grid-header th {
+  background: var(--color-surface-secondary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-3) var(--spacing-4);
+}
+
+.dashboard-card .k-grid .k-grid-content td {
+  padding: var(--spacing-3) var(--spacing-4);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+}
+
+.dashboard-card .k-grid .k-grid-content tr:hover {
+  background-color: var(--color-surface-secondary);
+}
+
+/* === ERROR STATES === */
+.dashboard-error {
+  text-align: center;
+  padding: var(--spacing-12);
+  color: var(--color-text-secondary);
+}
+
+.dashboard-error h2 {
+  color: var(--color-danger-600);
+  margin-bottom: var(--spacing-4);
+  font-size: var(--heading-h3-size);
+}
+
+.dashboard-error p {
+  margin-bottom: var(--spacing-8);
+  font-size: var(--body-large-size);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-sidebar {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-welcome h1 {
+    font-size: var(--heading-h2-size);
+  }
+  
+  .dashboard-welcome p {
+    font-size: var(--body-base-size);
+  }
+  
+  .dashboard-card .k-card-header,
+  .dashboard-card .k-card-body {
+    padding: var(--spacing-card-padding-sm);
+  }
+  
+  .dashboard-grid {
+    gap: var(--spacing-6);
+  }
+  
+  .dashboard-main,
+  .dashboard-sidebar {
+    gap: var(--spacing-6);
+  }
+
+  .quick-action-btn {
+    padding: var(--spacing-3);
+    font-size: var(--font-size-sm);
+  }
+
+  .action-icon {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .quick-action-btn {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-2);
+  }
+
+  .dashboard-card .k-chart {
+    min-height: 250px;
+  }
+
+  .dashboard-card .k-grid {
+    min-height: 250px;
+  }
+}

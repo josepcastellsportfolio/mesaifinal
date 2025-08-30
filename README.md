@@ -1,392 +1,186 @@
-# Mesai Final - Professional Full-Stack Application
 
-A professional-grade full-stack application built with **Django REST Framework** and **React TypeScript**, featuring **Telerik UI** components, JWT authentication, and comprehensive development tools.
+# Mesai Final - Full-Stack Application (Django REST + React)
 
-## 🚀 Features
+Este proyecto es una base realista para una aplicación full-stack, compuesta por un backend Django REST Framework y un frontend React con TypeScript. El objetivo es ofrecer una arquitectura funcional, mantenible y fácil de adaptar, pero no es un producto final ni una solución empresarial lista para producción.
 
-### Backend (Django + DRF)
-- ✅ **Django REST Framework** with comprehensive API endpoints
-- ✅ **JWT Authentication** using SimpleJWT
-- ✅ **Role-based Access Control** (Admin, Manager, User)
-- ✅ **Automatic API Documentation** with drf-spectacular (Swagger/OpenAPI)
-- ✅ **Redis Caching** for improved performance
-- ✅ **Database Signals** for business logic automation
-- ✅ **Comprehensive Test Suite** (Unit & Integration tests)
-- ✅ **PostgreSQL** database with optimized queries
-- ✅ **Environment-based Configuration** (Development/Production)
+---
 
-### Frontend (React + TypeScript)
-- ✅ **React 18** with **TypeScript** for type safety
-- ✅ **Telerik UI Components** for professional interface
-- ✅ **React Router** for client-side routing
-- ✅ **Context API** for global state management
-- ✅ **Custom Hooks** for API integration and reusability
-- ✅ **ESLint + Prettier** for code quality
-- ✅ **Responsive Design** with modern CSS
-- ✅ **Error Handling** and loading states
-- ✅ **Notification System** with Telerik components
-
-### DevOps & Development
-- ✅ **Docker Compose** for development environment
-- ✅ **Nginx** reverse proxy configuration
-- ✅ **Makefile** with convenient development commands
-- ✅ **Hot Reload** for both backend and frontend
-- ✅ **Database Migrations** and fixtures
-- ✅ **Code Formatting** and linting tools
-
-## 🏗️ Architecture
+## 🏗️ Arquitectura General
 
 ```
 mesaifinal/
-├── backend/                 # Django REST Framework API
-│   ├── config/             # Django settings and configuration
-│   ├── apps/               # Django applications
-│   │   ├── users/          # User management and authentication
-│   │   └── core/           # Core business logic (Products, Categories)
-│   ├── tests/              # Test suites
-│   └── requirements.txt    # Python dependencies
-├── frontend/               # React TypeScript application
+├── backend/    # API Django REST Framework
+│   ├── apps/   # apps: users (usuarios, auth, roles), core (productos, reviews)
+│   ├── config/ # settings, urls, wsgi
+│   ├── tests/  # tests unitarios y de integración
+│   └── ...
+├── frontend/   # React + TypeScript + Zustand + React Query
 │   ├── src/
-│   │   ├── components/     # Reusable React components
-│   │   ├── pages/          # Page components
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── services/       # API service layer
-│   │   ├── context/        # React Context providers
-│   │   ├── types/          # TypeScript type definitions
-│   │   └── constants/      # Application constants
-│   └── package.json        # Node.js dependencies
-├── docker-compose.yml      # Development environment
-├── Makefile               # Development commands
-└── README.md              # This file
+│   │   ├── components/   # Layout, comunes, API Test, Loading
+│   │   ├── pages/        # Dashboard, Products, Reviews, Profile
+│   │   ├── store/        # Zustand (auth, UI)
+│   │   ├── queries/      # React Query hooks
+│   │   ├── constants/    # Rutas, navegación, roles
+│   │   ├── design-system/# Tokens CSS, componentes, utilidades
+│   │   └── ...
+│   └── ...
+├── docker-compose.yml
+├── Makefile
+└── README.md
 ```
 
-## 🚀 Quick Start
+---
 
-### Prerequisites
-- **Docker** and **Docker Compose**
-- **Make** (optional, for convenience commands)
-- **Git**
+## � Estado y Alcance
 
-### 1. Clone the Repository
+### Backend (Django + DRF)
+- API RESTful para productos, reviews, usuarios y categorías.
+- Autenticación JWT (SimpleJWT), roles (admin, manager, user).
+- Permisos y navegación adaptados al rol.
+- Documentación automática (Swagger/OpenAPI).
+- Tests unitarios y de integración (pytest).
+- Base de datos SQLite (por defecto) o PostgreSQL (opcional).
+- Redis opcional para caché.
+- Señales para lógica de negocio básica.
+- Cobertura de tests razonable, pero no exhaustiva.
+- Gestión de errores y validaciones básicas.
+
+### Frontend (React + TypeScript)
+- Dashboard con métricas, gráfico y acciones rápidas.
+- Gestión de productos y reviews (crear, editar, listar).
+- Edición de perfil de usuario.
+- Navegación y layout responsive (sidebar, header, mobile/desktop).
+- Zustand para estado de usuario y UI.
+- React Query para datos de servidor.
+- KendoReact para formularios, tablas, inputs y layout.
+- Sistema de design tokens CSS (colores, tipografía, espaciado).
+- Página de test de API y login.
+- Gestión de errores y loading básica.
+- No hay tests E2E ni cobertura exhaustiva en frontend.
+
+### DevOps y Desarrollo
+- Docker Compose para entorno local.
+- Makefile con comandos útiles.
+- Hot reload en backend y frontend.
+- Linting y formateo (ESLint, Prettier, Black).
+
+---
+
+## ⚠️ Limitaciones y Realidad
+
+- No es un producto final ni una plantilla lista para producción.
+- El diseño visual es funcional pero no exhaustivo ni "pixel perfect".
+- La gestión de errores es básica y puede mejorarse.
+- No hay tests E2E ni cobertura exhaustiva.
+- El dashboard y los formularios son ejemplos realistas, pero no cubren todos los casos de negocio posibles.
+- El sistema de design tokens es una base, no un sistema de diseño corporativo completo.
+- El código es mantenible y modular, pero no está optimizado para grandes equipos o escalabilidad extrema.
+
+---
+
+## 🛠️ Instalación y Uso Rápido
+
+### Requisitos
+- Docker y Docker Compose
+- Make (opcional)
+- Git
+
+### 1. Clonar el repositorio
 ```bash
 git clone <repository-url>
 cd mesaifinal
 ```
 
-### 2. Environment Setup
+### 2. Configurar variables de entorno
 ```bash
-# Copy environment variables
 cp env.example .env
-
-# Edit .env file with your configuration
-nano .env
+# Edita .env según tu entorno
 ```
 
-### 3. Start Development Environment
+### 3. Arrancar entorno de desarrollo
 ```bash
-# Using Make (recommended)
 make dev-up
-
-# Or using Docker Compose directly
-docker-compose up -d
+# o
+docker-compose up --build
 ```
 
-### 4. Initialize Database
+### 4. Inicializar base de datos
 ```bash
-# Run migrations
 make migrate
-
-# Create superuser
 make createsuperuser
-
-# Load sample data (optional)
-make load-fixtures
+make load-fixtures  # opcional
 ```
 
-### 5. Access the Application
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000/api/v1/
-- **API Documentation**: http://localhost:8000/api/docs/
-- **Django Admin**: http://localhost:8000/admin/
-
-## 🛠️ Development
-
-### Available Commands
-
-```bash
-# Development Environment
-make dev-up              # Start all services
-make dev-down            # Stop all services
-make dev-restart         # Restart services
-make dev-logs            # View logs
-
-# Database Management
-make migrate             # Run migrations
-make makemigrations      # Create migrations
-make createsuperuser     # Create Django superuser
-
-# Testing
-make test-backend        # Run backend tests
-make test-frontend       # Run frontend tests
-
-# Code Quality
-make lint-backend        # Lint Python code
-make lint-frontend       # Lint TypeScript code
-make format-backend      # Format Python code
-make format-frontend     # Format TypeScript code
-
-# Shell Access
-make backend-shell       # Backend container shell
-make frontend-shell      # Frontend container shell
-make db-shell           # Database shell
-make redis-shell        # Redis shell
-```
-
-### Local Development (without Docker)
-
-#### Backend Setup
-```bash
-cd backend
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Set up environment variables
-export DJANGO_SETTINGS_MODULE=config.settings.development
-
-# Run migrations
-python manage.py migrate
-
-# Start development server
-python manage.py runserver
-```
-
-#### Frontend Setup
-```bash
-cd frontend
-
-# Install dependencies
-npm install
-
-# Start development server
-npm start
-```
-
-## 📚 API Documentation
-
-The API is fully documented using OpenAPI/Swagger specification:
-- **Interactive Docs**: http://localhost:8000/api/docs/
-- **ReDoc**: http://localhost:8000/api/redoc/
-- **OpenAPI Schema**: http://localhost:8000/api/schema/
-
-### Key Endpoints
-
-#### Authentication
-- `POST /api/v1/auth/login/` - User login
-- `POST /api/v1/auth/refresh/` - Refresh JWT token
-- `POST /api/v1/users/register/` - User registration
-
-#### Users
-- `GET /api/v1/users/me/` - Current user profile
-- `PATCH /api/v1/users/update_profile/` - Update profile
-- `GET /api/v1/users/` - List users (admin only)
-
-#### Products
-- `GET /api/v1/products/` - List products
-- `POST /api/v1/products/` - Create product (admin/manager)
-- `GET /api/v1/products/{slug}/` - Product details
-- `GET /api/v1/products/featured/` - Featured products
-
-#### Categories
-- `GET /api/v1/categories/` - List categories
-- `GET /api/v1/categories/root_categories/` - Root categories only
-- `GET /api/v1/categories/{slug}/products/` - Products in category
-
-## 🧪 Testing
-
-### Backend Tests
-```bash
-# Run all tests
-make test-backend
-
-# Run specific test file
-docker-compose exec backend python -m pytest tests/test_users.py -v
-
-# Run with coverage
-docker-compose exec backend python -m pytest --cov=apps --cov-report=html
-```
-
-### Frontend Tests
-```bash
-# Run all tests
-make test-frontend
-
-# Run tests in watch mode
-docker-compose exec frontend npm test
-
-# Generate coverage report
-docker-compose exec frontend npm test -- --coverage --watchAll=false
-```
-
-## 🔧 Configuration
-
-### Environment Variables
-
-Create a `.env` file based on `env.example`:
-
-```env
-# Django Settings
-SECRET_KEY=your-secret-key-here
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-
-# Database
-DB_NAME=mesaifinal_db
-DB_USER=postgres
-DB_PASSWORD=postgres
-DB_HOST=localhost
-DB_PORT=5432
-
-# Redis
-REDIS_URL=redis://127.0.0.1:6379/1
-
-# Email (for production)
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_HOST_USER=your-email@gmail.com
-EMAIL_HOST_PASSWORD=your-app-password
-```
-
-### Frontend Configuration
-
-The frontend configuration is handled through environment variables:
-
-```env
-REACT_APP_API_URL=http://localhost:8000/api/v1
-```
-
-## 🚢 Production Deployment
-
-### Using Docker Compose
-
-1. **Create production environment file**:
-```bash
-cp env.example .env.prod
-# Edit .env.prod with production values
-```
-
-2. **Build and deploy**:
-```bash
-make build-prod
-make deploy-prod
-```
-
-### Manual Deployment
-
-#### Backend (Django)
-```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Set production environment
-export DJANGO_SETTINGS_MODULE=config.settings.production
-
-# Collect static files
-python manage.py collectstatic --noinput
-
-# Run migrations
-python manage.py migrate
-
-# Start with Gunicorn
-gunicorn config.wsgi:application --bind 0.0.0.0:8000
-```
-
-#### Frontend (React)
-```bash
-# Install dependencies
-npm install
-
-# Build for production
-npm run build
-
-# Serve with a web server (nginx, apache, etc.)
-```
-
-## 🔒 Security
-
-### Backend Security Features
-- JWT token authentication with refresh mechanism
-- Role-based access control (RBAC)
-- CORS configuration for cross-origin requests
-- SQL injection protection through Django ORM
-- XSS protection with Django security middleware
-- CSRF protection for form submissions
-- Rate limiting (configured in Nginx)
-
-### Frontend Security Features
-- TypeScript for type safety
-- Input validation and sanitization
-- Secure token storage
-- Protected routes based on authentication
-- Error boundary components
-
-## 🎨 UI/UX
-
-### Design System
-- **Telerik UI Components** for consistent design
-- **Responsive Design** for mobile and desktop
-- **Dark/Light Mode** support (configurable)
-- **Accessibility** features (WCAG compliance)
-- **Loading States** and error handling
-- **Professional Color Scheme** and typography
-
-### Key UI Features
-- Professional dashboard with metrics and charts
-- Data grid with sorting, filtering, and pagination
-- Form components with validation
-- Notification system for user feedback
-- Modal dialogs and confirmation prompts
-- Responsive navigation with collapsible sidebar
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Code Standards
-- Follow PEP8 for Python code
-- Use ESLint and Prettier for TypeScript/React
-- Write tests for new features
-- Update documentation as needed
-- Use conventional commit messages
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Django** and **Django REST Framework** teams
-- **React** and **TypeScript** communities
-- **Progress Telerik** for UI components
-- **Docker** for containerization
-- All open-source contributors
-
-## 📞 Support
-
-For support and questions:
-- Create an issue in the repository
-- Check the documentation
-- Review the API docs at `/api/docs/`
+### 5. Acceso
+- Frontend: http://localhost:3000 o http://localhost:5173
+- Backend API: http://localhost:8000/api/v1/
+- Docs API: http://localhost:8000/api/docs/
+- Django Admin: http://localhost:8000/admin/
 
 ---
 
-**Built with ❤️ using Django, React, and TypeScript**
+## 📚 Documentación y Endpoints Clave
+
+### API REST (Swagger/OpenAPI)
+- http://localhost:8000/api/docs/
+- http://localhost:8000/api/redoc/
+
+### Endpoints principales
+- Autenticación: `/api/v1/auth/login/`, `/api/v1/auth/refresh/`
+- Usuarios: `/api/v1/users/me/`, `/api/v1/users/` (admin)
+- Productos: `/api/v1/products/`, `/api/v1/products/{slug}/`
+- Reviews: `/api/v1/reviews/`, `/api/v1/reviews/{id}/`
+- Categorías: `/api/v1/categories/`
+
+---
+
+## 🧪 Testing
+
+### Backend
+- `make test-backend` o `pytest` en backend/tests/
+- Cobertura razonable, pero no exhaustiva.
+
+### Frontend
+- `make test-frontend` (si está configurado)
+- No hay tests E2E ni cobertura completa.
+
+---
+
+## 🔧 Configuración
+
+### Variables de entorno
+- `.env` basado en `env.example` para backend y frontend.
+- Cambia los valores según tu entorno local o de producción.
+
+---
+
+## 🎨 UI/UX y Design System
+
+- KendoReact para componentes visuales.
+- Tokens CSS para colores, tipografía, espaciado.
+- Layout responsive, sidebar y header adaptados a roles.
+- No es un sistema de diseño corporativo, pero es una base sólida.
+
+---
+
+## 🤝 Contribución
+
+1. Haz un fork
+2. Crea una rama feature
+3. Haz tus cambios y tests
+4. Abre un Pull Request
+
+### Estándares
+- Python: PEP8, Black
+- JS/TS: ESLint, Prettier
+- Tests y documentación para nuevas features
+
+---
+
+## 📄 Licencia
+
+MIT. Ver archivo LICENSE.
+
+---
+
+**Este proyecto es una base realista, funcional y mantenible, pero no una solución final ni "enterprise". Úsalo como punto de partida para tus propios desarrollos.**

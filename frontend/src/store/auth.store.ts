@@ -59,5 +59,24 @@ export const useAuthStore = create<AuthStore>()(
     )
 );
 
+interface DashboardState {
+    filters: string[];
+}
+
+interface DashboardActions {
+    addFilter: (filter: string) => void;
+    removeFilter: (filter: string) => void;
+    clearFilters: () => void;
+}
+
+type DashboardStore = DashboardState & DashboardActions;
+
+export const useDashboardStore = create<DashboardStore>((set) => ({
+    filters: [],
+    addFilter: (filter) => set((state) => ({ filters: [...state.filters, filter] })),
+    removeFilter: (filter) => set((state) => ({ filters: state.filters.filter((f) => f !== filter) })),
+    clearFilters: () => set({ filters: [] }),
+}));
+
 // Initialize auth state on app start
 useAuthStore.getState().updateAuthState(); 

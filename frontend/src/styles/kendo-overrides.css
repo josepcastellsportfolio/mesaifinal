@@ -6,7 +6,7 @@
 /* === KENDO DRAWER CUSTOMIZATIONS === */
 .k-drawer-container {
   height: 100vh !important;
-  position: absolute !important;
+  position: relative !important;
   top: 0 !important;
   left: 0 !important;
   z-index: var(--z-index-fixed) !important;
@@ -218,6 +218,30 @@
   padding: var(--spacing-input-padding-y) var(--spacing-input-padding-x);
   transition: var(--transition-fast);
   width: 100%;
+}
+
+.k-list-item,
+.k-multiselect-item {
+  cursor: pointer;
+}
+
+/* Forzar tamaño correcto de todos los SVG en chips y clear del Kendo MultiSelect */
+.k-multiselect .k-chip-remove-action svg,
+.k-multiselect .k-clear-value svg,
+.k-multiselect .k-chip-list svg,
+.k-multiselect .k-svg-icon {
+  width: 1em !important;
+  height: 1em !important;
+  min-width: 1em !important;
+  min-height: 1em !important;
+  max-width: 1.5em !important;
+  max-height: 1.5em !important;
+  vertical-align: middle !important;
+}
+
+.k-notification .k-svg-icon {
+  width: 18px !important;
+  height: 18px !important;
 }
 
 .k-textbox:focus,

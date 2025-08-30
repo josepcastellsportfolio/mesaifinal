@@ -3,8 +3,9 @@
  * Uses Telerik UI components for a professional look and responsive design.
  */
 
-import React, { useState } from 'react';
-import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom'
+import { useCurrentUser } from '@/queries/auth.queries';
 import { 
   Drawer, 
   DrawerContent,
@@ -44,6 +45,9 @@ const AppLayout: React.FC = () => {
   const handleNavigation = (path: string) => {
     navigate(path);
   };
+
+const { data: username } = useCurrentUser();
+
 
   const handleLogout = async () => {
     logoutMutation.mutate(undefined, {
@@ -130,8 +134,8 @@ const AppLayout: React.FC = () => {
       <AppBarSection>
         <div className="user-section">
           <span className="user-name">
-            {user?.full_name || user?.username}
-          </span>
+  {user?.first_name} {user?.last_name} {/* o user?.username */}
+</span>
           <div className="user-menu">
             <Button
               fillMode="flat"

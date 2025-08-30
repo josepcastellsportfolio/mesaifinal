@@ -96,7 +96,7 @@ const ApiTest: React.FC = () => {
     setIsLoading(true);
     const timestamp = new Date().toISOString();
     
-    loginMutation.mutate(credentials, {
+    loginMutation.mutate({ email: credentials.username, password: credentials.password }, {
       onSuccess: (data) => {
         addResult({
           endpoint: 'React Query Login',
@@ -183,7 +183,7 @@ const ApiTest: React.FC = () => {
         marginBottom: '20px' 
       }}>
         <Button
-          primary
+          themeColor="primary"
           onClick={testApiDocs}
           disabled={isLoading}
         >
@@ -250,7 +250,7 @@ const ApiTest: React.FC = () => {
           <label>Username:</label>
           <Input
             value={credentials.username}
-            onChange={(e) => setCredentials(prev => ({ ...prev, username: e.target.value }))}
+            onChange={(e) => setCredentials(prev => ({ ...prev, username: e.target.value as string }))}
           />
         </div>
         <div>
@@ -258,7 +258,7 @@ const ApiTest: React.FC = () => {
           <Input
             type="password"
             value={credentials.password}
-            onChange={(e) => setCredentials(prev => ({ ...prev, password: e.target.value }))}
+            onChange={(e) => setCredentials(prev => ({ ...prev, password: e.target.value as string }))}
           />
         </div>
       </div>

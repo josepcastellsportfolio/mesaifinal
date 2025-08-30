@@ -6,8 +6,35 @@ import ProtectedRoute from '@/components/common/ProtectedRoute/ProtectedRoute';
 import AppLayout from '@/components/common/Layout/AppLayout';
 import LoginPage from '@/pages/Login/Login';
 import Dashboard from '@/pages/Dashboard/DashboardPage';
-import ApiTest from '@/components/ApiTest';
 import { ROUTES } from '@/constants';
+import '@/design-system/tokens/index.css';
+import '@/design-system/components/index.css';
+// Products
+import ProductsPage from '@/pages/Products/ProductsPage';
+import ProductDetailPage from '@/pages/Products/ProductDetailPage';
+import CreateProductPage from '@/pages/Products/CreateProductPage';
+import ProductsStatsPage from '@/pages/Products/ProductsStatsPage';
+import ProductsFeaturedPage from '@/pages/Products/ProductsFeaturedPage';
+import ProductsLowStockPage from '@/pages/Products/ProductsLowStockPage';
+import ProductsImportPage from '@/pages/Products/ProductsImportPage';
+import ProductsExportPage from '@/pages/Products/ProductsExportPage';
+// Categories
+import CategoriesPage from '@/pages/Categories/CategoriesPage';
+import CategoriesDetail from '@/pages/Categories/CategoriesDetail';
+import CreateCategories from '@/pages/Categories/CreateCategories';
+// Tags
+import TagsPage from '@/pages/Tags/TagsPage';
+import TagDetail from '@/pages/Tags/TagDetail';
+import CreateTag from '@/pages/Tags/CreateTag';
+// Reviews
+import ReviewsPage from '@/pages/Reviews/ReviewsPage';
+import ReviewDetail from '@/pages/Reviews/ReviewDetail';
+import CreateReview from '@/pages/Reviews/CreateReview';
+// Users
+import UsersPage from '@/pages/Users/UsersPage';
+import UserDetailPage from '@/pages/Users/UserDetailPage';
+import ProfilePage from '@/pages/Users/ProfilePage';
+import UserCreatePage from './pages/Users/UserCreatePage';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -49,8 +76,41 @@ function App() {
           >
             <Route index element={<Navigate to={ROUTES.DASHBOARD} replace />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="api-test" element={<ApiTest />} />
-            {/* Add more protected routes here */}
+            {/* Products CRUD and custom routes */}
+            <Route path={ROUTES.PRODUCTS} element={<ProductsPage />} />
+            <Route path={ROUTES.PRODUCT_DETAIL} element={<ProductDetailPage />} />
+            <Route path={ROUTES.PRODUCT_CREATE} element={<CreateProductPage />} />
+            <Route path={ROUTES.PRODUCT_EDIT} element={<CreateProductPage />} />
+            <Route path={ROUTES.PRODUCTS_STATS} element={<ProductsStatsPage />} />
+            <Route path={ROUTES.PRODUCTS_STATISTICS} element={<ProductsStatsPage />} />
+            <Route path={ROUTES.PRODUCTS_FEATURED} element={<ProductsFeaturedPage />} />
+            <Route path={ROUTES.PRODUCTS_LOW_STOCK} element={<ProductsLowStockPage />} />
+            <Route path={ROUTES.PRODUCTS_IMPORT} element={<ProductsImportPage />} />
+            <Route path={ROUTES.PRODUCTS_EXPORT} element={<ProductsExportPage />} />
+
+            {/* Categories CRUD routes */}
+            <Route path={ROUTES.CATEGORIES} element={<CategoriesPage />} />
+            <Route path={ROUTES.CATEGORY_DETAIL} element={<CategoriesDetail />} />
+            <Route path={ROUTES.CATEGORY_CREATE} element={<CreateCategories />} />
+            <Route path={ROUTES.CATEGORY_EDIT} element={<CreateCategories />} />
+
+            {/* Tags CRUD routes */}
+            <Route path={ROUTES.TAGS} element={<TagsPage />} />
+            <Route path={ROUTES.TAG_CREATE} element={<CreateTag />} />
+            <Route path={ROUTES.TAG_DETAIL} element={<TagDetail />} />
+            <Route path={ROUTES.TAG_EDIT} element={<CreateTag />} />
+
+            {/* Reviews CRUD routes */}
+            <Route path={ROUTES.REVIEWS} element={<ReviewsPage />} />
+            <Route path={ROUTES.REVIEW_CREATE} element={<CreateReview />} />
+            <Route path={ROUTES.REVIEW_EDIT} element={<CreateReview />} />
+            <Route path={ROUTES.REVIEW_DETAIL} element={<ReviewDetail />} />
+            {/* Users CRUD routes */}
+            <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+            <Route path={ROUTES.USERS} element={<UsersPage />} />
+            <Route path={ROUTES.USER_DETAIL} element={<UserDetailPage />} />
+            <Route path={ROUTES.USER_EDIT} element={<UserCreatePage />} />
+            <Route path={ROUTES.USER_CREATE} element={<UserCreatePage />} />
           </Route>
         </Routes>
       </Router>

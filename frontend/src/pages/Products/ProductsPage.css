@@ -1,0 +1,213 @@
+/* Products Page - Specific Styles Only */
+.products-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+}
+
+/* Using global page layout styles from design system */
+
+/* Product Grid Cell Styles */
+.product-name-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.product-sku {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+}
+
+/* Stock Badge Styles - Specific to Products */
+.stock-badge {
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--border-radius-badge);
+  font-size: var(--caption-size);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  min-width: 40px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.stock-badge.in-stock {
+  background-color: var(--color-success-100);
+  color: var(--color-success-800);
+}
+
+.stock-badge.low-stock {
+  background-color: var(--color-warning-100);
+  color: var(--color-warning-800);
+}
+
+.stock-badge.out-of-stock {
+  background-color: var(--color-danger-100);
+  color: var(--color-danger-800);
+}
+
+/* Featured Badge Styles */
+.featured-badge {
+  color: var(--color-warning-600);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.not-featured {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Action Buttons - Grid specific */
+.action-buttons {
+  display: flex;
+  gap: var(--spacing-1);
+  align-items: center;
+}
+
+.action-buttons .k-button {
+  min-width: auto;
+  padding: var(--spacing-1) var(--spacing-3);
+  font-size: var(--caption-size);
+}
+
+/* Error Container */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  text-align: center;
+  gap: var(--spacing-4);
+}
+
+.error-container h2 {
+  color: var(--color-danger-600);
+  margin: 0;
+}
+
+.error-container p {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+  }
+
+  .content-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .search-container input {
+    width: 100% !important;
+  }
+
+  .toolbar-info {
+    justify-content: center;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .action-buttons .k-button {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+}
+.product-name-cell.clickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.product-name-cell.clickable:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.product-name-cell.clickable:active {
+  background-color: #e9ecef;
+  transform: translateY(1px);
+}
+
+/* Selection Indicator */
+.selection-indicator {
+  color: var(--color-success);
+  font-weight: var(--font-weight-semibold);
+  margin-left: var(--spacing-sm);
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Selected Row Styles */
+.selected-row {
+  background-color: var(--color-gray-100) !important;
+  border-left: 4px solid var(--color-success) !important;
+}
+
+.selected-row:hover {
+  background-color: var(--color-gray-200) !important;
+}
+
+/* Grid Row Selection Styles */
+.k-grid tr.k-state-selected {
+  background-color: var(--color-gray-100) !important;
+  border-left: 4px solid var(--color-success) !important;
+}
+
+.k-grid tr.k-state-selected:hover {
+  background-color: var(--color-gray-200) !important;
+}
+
+.k-grid tr.k-state-selected td {
+  background-color: transparent !important;
+}
+
+/* Edit Selected Button Styles */
+.edit-selected-button {
+  background: var(--color-success) !important;
+  border: none !important;
+  color: white !important;
+}
+
+/* Override Kendo theme colors */
+.edit-selected-button.k-button.k-button-solid.k-button-solid-success {
+  background: var(--color-success) !important;
+  border-color: var(--color-success) !important;
+  color: white !important;
+}
+
+.edit-selected-button.k-button.k-button-solid.k-button-solid-success:hover {
+  background: var(--color-success-dark) !important;
+  border-color: var(--color-success-dark) !important;
+  color: white !important;
+}

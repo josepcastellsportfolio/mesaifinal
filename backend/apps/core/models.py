@@ -129,7 +129,9 @@ class Product(TimeStampedModel):
     )
     category = models.ForeignKey(
         Category,
-        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
         related_name='products',
         help_text="Product category"
     )

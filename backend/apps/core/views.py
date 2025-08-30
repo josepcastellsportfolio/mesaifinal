@@ -308,7 +308,6 @@ class TagViewSet(viewsets.ModelViewSet):
     ordering_fields = ['name', 'created_at']
     ordering = ['name']
     lookup_field = 'slug'
-    
     @action(detail=True, methods=['get'])
     def products(self, request, slug=None):
         """Get all products with this tag."""

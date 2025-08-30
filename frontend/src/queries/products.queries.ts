@@ -203,26 +203,6 @@ export const useProductStats = (enabled = true) => {
 };
 
 /**
- * Get product reviews
- */
-export const useProductReviews = (slug: string, page = 1, pageSize = 10) => {
-  return useQuery({
-    queryKey: [...PRODUCT_QUERY_KEYS.reviews(slug), { page, pageSize }],
-    queryFn: async (): Promise<ApiResponse<Review>> => {
-      const params = new URLSearchParams({
-        page: page.toString(),
-        page_size: pageSize.toString(),
-      });
-      
-      const url = `${API_ENDPOINTS.PRODUCTS}${slug}/reviews/?${params}`;
-      return api.get<ApiResponse<Review>>(url);
-    },
-    enabled: !!slug,
-    staleTime: 5 * 60 * 1000,
-  });
-};
-
-/**
  * Get related products
  */
 export const useRelatedProducts = (slug: string, limit = 4) => {

@@ -13,8 +13,20 @@ COPY package*.json ./
 # Install dependencies
 RUN npm ci --only=production=false
 
+# Accept Kendo UI license key as build arg (with VITE_ prefix for Vite compatibility)
+ARG VITE_TELERIK_LICENSE
+
 # Copy project files
 COPY . .
+
+# Set license key as env variable for Vite build (with VITE_ prefix)
+ENV VITE_TELERIK_LICENSE=${VITE_TELERIK_LICENSE}
+
+# Clean Vite and npm cache before activating license
+RUN rm -rf node_modules/.vite node_modules/.cache
+
+# Activate Kendo UI license
+RUN npx kendo-ui-license activate
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs
@@ -33,4 +45,3 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
 
 # Start development server
 CMD ["npx", "vite"]
-

@@ -1,0 +1,69 @@
+.virtual-list {
+  position: relative;
+  overflow: auto;
+  will-change: scroll-position;
+}
+
+.virtual-list-item {
+  position: relative;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+/* Smooth scrolling */
+.virtual-list {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize for mobile */
+@media (max-width: 768px) {
+  .virtual-list {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Loading state */
+.virtual-list--loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Empty state */
+.virtual-list--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* Scrollbar styling */
+.virtual-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.virtual-list::-webkit-scrollbar-track {
+  background: var(--color-background-secondary);
+  border-radius: 4px;
+}
+
+.virtual-list::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.virtual-list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* Performance optimizations */
+.virtual-list * {
+  box-sizing: border-box;
+}
+
+.virtual-list-item {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}

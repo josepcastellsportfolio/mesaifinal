@@ -155,6 +155,42 @@ export interface ProductFormData {
   tag_ids?: number[];
 }
 
+export interface ProductCreate {
+  name: string;
+  description: string;
+  price: number;
+  stock_quantity: number;
+  sku: string;
+  status: 'draft' | 'published' | 'archived';
+  is_featured: boolean;
+  category_id: number | null;
+  tag_ids: number[];
+}
+
+export interface ProductUpdate {
+  name: string;
+  description: string;
+  price: number;
+  stock_quantity: number;
+  sku: string;
+  status: 'draft' | 'published' | 'archived';
+  is_featured: boolean;
+  category_id: number | null;
+  tag_ids: number[];
+}
+
+export interface ProductFilters {
+  search?: string;
+  category?: number;
+  tags?: number[];
+  status?: string;
+  is_featured?: boolean;
+  price_min?: number;
+  price_max?: number;
+  ordering?: string;
+  page_size?: number;
+}
+
 export interface ReviewFormData {
   rating: number;
   title: string;
@@ -182,6 +218,10 @@ export interface FilterState {
   price_min?: number;
   price_max?: number;
   ordering?: string;
+  page_size?: number;
+  page?: number;
+  stock_quantity__lt?: number;
+  stock_quantity__gt?: number;
 }
 
 // Component Props Types

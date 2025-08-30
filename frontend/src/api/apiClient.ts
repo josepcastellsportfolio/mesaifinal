@@ -32,10 +32,6 @@ export const tokenManager = {
     return null;
   },
 
-  getAccessToken(): string | null {
-    return localStorage.getItem(STORAGE_KEYS.ACCESS_TOKEN);
-  },
-
   getRefreshToken(): string | null {
     return localStorage.getItem(STORAGE_KEYS.REFRESH_TOKEN);
   },

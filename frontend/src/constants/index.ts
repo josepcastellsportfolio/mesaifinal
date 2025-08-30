@@ -15,12 +15,16 @@ export const API_ENDPOINTS = {
   USER_REGISTER: '/users/register/',
   USER_ME: '/users/me/',
   USER_PROFILE: '/users/update_profile/',
-  
+ 
+
   // Core
   CATEGORIES: '/categories/',
   PRODUCTS: '/products/',
   TAGS: '/tags/',
   REVIEWS: '/reviews/',
+
+  //STATS
+   PRODUCTS_STATISTICS: '/products/statistics',
 } as const;
 
 // Local Storage Keys
@@ -46,17 +50,38 @@ export const ROUTES = {
   PRODUCT_DETAIL: '/products/:slug',
   PRODUCT_CREATE: '/products/create',
   PRODUCT_EDIT: '/products/:slug/edit',
-  
+  PRODUCTS_STATS: '/products/stats',
+  PRODUCTS_STATISTICS: '/products/statistics',
+  PRODUCTS_LOW_STOCK: '/products/low-stock',
+  PRODUCTS_FEATURED: '/products/featured',
+  PRODUCTS_IMPORT: '/products/import',
+  PRODUCTS_EXPORT: '/products/export',
+
   // Categories
   CATEGORIES: '/categories',
   CATEGORY_DETAIL: '/categories/:slug',
   CATEGORY_CREATE: '/categories/create',
   CATEGORY_EDIT: '/categories/:slug/edit',
-  
+
+  // Tags
+  TAGS: '/tags',
+  TAG_CREATE: '/tags/create',
+  TAG_EDIT: '/tags/:slug/edit',
+  TAG_DETAIL: '/tags/:slug',
+
+
+  // Reviews
+  REVIEWS: '/reviews/',
+  REVIEW_CREATE: '/reviews/create',
+  REVIEW_EDIT: '/reviews/:id/edit',
+  REVIEW_DETAIL: '/reviews/:id',
+
   // Users (Admin)
   USERS: '/users',
-  USER_DETAIL: '/users/:id',
-  
+  USER_DETAIL: '/users/:id/',
+  USER_CREATE: '/users/create/',
+  USER_EDIT: '/users/:id/edit/',
+
   // Settings
   SETTINGS: '/settings',
 } as const;
@@ -173,12 +198,6 @@ export const NAVIGATION_ITEMS = [
     roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.USER],
   },
   {
-    label: 'API Test',
-    path: ROUTES.API_TEST,
-    icon: 'api',
-    roles: [USER_ROLES.ADMIN],
-  },
-  {
     label: 'Products',
     path: ROUTES.PRODUCTS,
     icon: 'product',
@@ -188,6 +207,18 @@ export const NAVIGATION_ITEMS = [
     label: 'Categories',
     path: ROUTES.CATEGORIES,
     icon: 'category',
+    roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER],
+  },
+  {
+    label: 'Tags',
+    path: ROUTES.TAGS,
+    icon: 'tag',
+    roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER],
+  },
+    {
+    label: 'Reviews',
+    path: ROUTES.REVIEWS,
+    icon: 'review',
     roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER],
   },
   {
@@ -202,6 +233,7 @@ export const NAVIGATION_ITEMS = [
     icon: 'settings',
     roles: [USER_ROLES.ADMIN, USER_ROLES.MANAGER, USER_ROLES.USER],
   },
+  
 ] as const;
 
 // Error Messages

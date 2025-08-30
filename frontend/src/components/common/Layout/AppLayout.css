@@ -26,20 +26,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Kendo Drawer Overrides */
-.k-drawer-container {
-  height: 100vh !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  z-index: 1000 !important;
-}
-
-.k-drawer-content {
-  height: 100vh !important;
-  overflow: hidden !important;
-}
-
 /* Adjust main content based on drawer state */
 .app-layout .k-drawer-expanded ~ .app-content {
   margin-left: 250px;
@@ -157,6 +143,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  justify-content: flex-end;
 }
 
 .user-name {

@@ -1,0 +1,497 @@
+/* Create Product Page - Specific Styles Only */
+.create-product-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+}
+
+/* Using global page layout styles from design system */
+
+.page-content {
+  overflow-y: auto; /* Override for form pages */
+}
+
+.product-form-card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.selected-tags-preview {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 32px;
+  align-items: center;
+}
+
+.form-section h3 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: var(--spacing-xs);
+}
+
+/* Form Field Styles - Kendo UI specific adjustments */
+.k-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.k-form-field > .k-label {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  font-size: var(--label-size);
+}
+
+.k-form-field .k-input,
+.k-form-field .k-textarea,
+.k-form-field .k-numerictextbox,
+.k-form-field .k-dropdown {
+  width: 100%;
+}
+
+.k-list-filter .k-input-icon svg,
+.k-list-filter .k-svg-icon,
+.k-list-filter svg {
+  width: 1em !important;
+  height: 1em !important;
+  min-width: 1em !important;
+  min-height: 1em !important;
+  max-width: 1.5em !important;
+  max-height: 1.5em !important;
+  vertical-align: middle !important;
+}
+
+.k-dropdownlist,
+.k-dropdownlist * {
+  cursor: pointer !important;
+}
+
+/* Clean input styling for description */
+
+/* Pricing & Inventory Grid Layout */
+.pricing-inventory-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-4);
+}
+
+.pricing-group,
+.inventory-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+
+}
+
+/* Input with Icon Layout */
+.input-with-icon {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background-color: var(--color-surface-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.input-with-icon:hover {
+  border-color: var(--color-border-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.input-with-icon:focus-within {
+  border-color: var(--color-primary-500);
+  box-shadow: var(--shadow-input-focus);
+}
+
+.input-icon {
+  font-size: var(--font-size-lg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-primary-100);
+  border-radius: var(--border-radius-sm);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+/* Field header with icon and title */
+.field-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-2);
+}
+
+.field-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.input-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+/* Specific width for numeric inputs */
+.input-wrapper .k-numerictextbox {
+  width: 100%;
+  max-width: 180px;
+  min-width: 120px;
+}
+
+/* Hide spinner buttons for cleaner look */
+.input-wrapper .k-numerictextbox .k-input-spinner {
+  display: none !important;
+}
+
+.input-wrapper .k-numerictextbox .k-spin-button {
+  display: none !important;
+}
+
+/* Ensure the numeric textbox container takes full width */
+.input-wrapper .k-numerictextbox {
+  position: relative;
+}
+
+.input-wrapper .k-numerictextbox .k-input {
+  text-align: right;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base); /* reduced */
+  background-color: var(--color-surface-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-2) var(--spacing-3); /* reduced */
+  box-sizing: border-box;
+}
+
+.input-wrapper .k-numerictextbox .k-input:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+/* Price field specific styling */
+.pricing-group .k-numerictextbox .k-input {
+  color: var(--color-success-700);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Stock field specific styling */
+.inventory-group .k-numerictextbox .k-input {
+  color: var(--color-info-700);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Status row styles */
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+/* Simplified dropdown styling */
+.status-field .k-dropdownlist {
+  background-color: var(--color-surface-inverse);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-primary);
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+/* Category dropdown specific styling */
+.category-dropdown {
+  width: 100%;
+  background-color: var(--color-surface-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-primary);
+  padding: var(--spacing-2) var(--spacing-3);
+  transition: var(--transition-fast);
+}
+
+.category-dropdown:hover {
+  border-color: var(--color-border-hover);
+}
+
+.category-dropdown:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+/* Field hint styling */
+.field-hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-1);
+  line-height: 1.4;
+}
+
+/* Checkbox styling for featured toggle */
+.input-with-icon .k-checkbox {
+  margin-top: var(--spacing-2);
+}
+
+.input-with-icon .k-checkbox-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.status-selected {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding-bottom: 0;
+}
+
+.featured-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding-bottom: 0;
+  margin-top: var(--spacing-3);
+}
+
+.featured-toggle .k-form-field {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.featured-toggle .k-checkbox {
+  margin: 0;
+}
+
+.featured-toggle .k-checkbox-label {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  user-select: none;
+  margin-left: var(--spacing-2);
+}
+
+
+.status-selected .status-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.status-selected .status-value {
+  font-weight: var(--font-weight-semibold);
+  text-transform: capitalize;
+}
+
+/* Meta info under inputs */
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-1);
+}
+
+.meta-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.meta-value {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.field-hint {
+  font-size: var(--caption-size);
+  color: var(--color-text-tertiary);
+  margin-top: var(--spacing-1);
+  font-style: italic;
+  line-height: var(--line-height-normal);
+}
+
+/* Checkbox Field */
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) 0;
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+}
+
+.checkbox-field label {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Form Actions - Page specific */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-4);
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--color-border-primary);
+  margin-top: var(--spacing-8);
+}
+
+.form-actions .k-button {
+  min-width: 120px;
+}
+
+/* Cancel button with white background */
+.form-actions .cancel-button {
+  background-color: var(--color-surface-primary) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid var(--color-border-primary) !important;
+  transition: var(--transition-fast);
+}
+
+.form-actions .cancel-button:hover:not(:disabled) {
+  background-color: var(--color-surface-secondary) !important;
+  border-color: var(--color-border-secondary) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-actions .cancel-button:active:not(:disabled) {
+  background-color: var(--color-neutral-100) !important;
+  transform: translateY(1px);
+}
+
+/* Primary button disabled state enhancement */
+.form-actions .k-button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.form-actions .k-button:not([disabled]) {
+  transition: var(--transition-fast);
+}
+
+.form-actions .k-button:not([disabled]):hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .form-section:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding: var(--spacing-4);
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-actions .k-button {
+    width: 100%;
+  }
+
+  /* Stack pricing/inventory fields vertically on mobile */
+  .pricing-inventory-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+
+  /* Adjust input widths on mobile */
+
+  /* Adjust icon positioning on mobile */
+  .input-icon {
+    margin-top: 20px;
+  }
+}
+
+/* Field Validation States */
+.k-form-field.k-state-invalid .k-input,
+.k-form-field.k-state-invalid .k-textarea,
+.k-form-field.k-state-invalid .k-numerictextbox,
+.k-form-field.k-state-invalid .k-dropdown {
+  border-color: var(--color-danger);
+  
+}
+
+.k-form-field .k-form-error {
+  color: var(--color-danger);
+  font-size: var(--font-size-xs);
+  margin-top: var(--spacing-xs);
+}
+
+
+.category-dropdown {
+  width: 100%;
+  background-color: var(--color-surface-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-primary);
+  padding: var(--spacing-2) var(--spacing-3);
+  transition: var(--transition-fast);
+}
+
+.category-dropdown:hover {
+  border-color: var(--color-border-hover);
+}
+
+.category-dropdown:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+/* Kendo DropDownList specific overrides */
+.k-dropdownlist.category-dropdown {
+  background-color: var(--color-surface-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-primary);
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+.k-dropdownlist.category-dropdown:hover {
+  border-color: var(--color-border-hover);
+}
+
+.k-dropdownlist.category-dropdown:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}

@@ -1,0 +1,167 @@
+/* StatsCard Component Styles */
+.stats-card {
+  border-radius: var(--border-radius-lg);
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-border-primary);
+  height: 100%;
+}
+
+.stats-card.clickable {
+  cursor: pointer;
+}
+
+.stats-card.clickable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stats-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  height: 100%;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.stats-title-section {
+  flex: 1;
+}
+
+.stats-title {
+  margin: 0;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  line-height: 1.2;
+}
+
+.stats-subtitle {
+  margin: var(--spacing-xs) 0 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  line-height: 1.2;
+}
+
+.stats-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+}
+
+.stats-value-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.stats-value {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1;
+  margin-bottom: var(--spacing-sm);
+}
+
+.stats-trend {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.stats-trend.positive {
+  color: var(--color-success);
+}
+
+.stats-trend.negative {
+  color: var(--color-error);
+}
+
+.trend-icon {
+  font-size: var(--font-size-sm);
+}
+
+.trend-value {
+  font-weight: var(--font-weight-semibold);
+}
+
+.trend-label {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Color Variants */
+.stats-card-primary .stats-icon {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.stats-card-success .stats-icon {
+  background: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.stats-card-warning .stats-icon {
+  background: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.stats-card-error .stats-icon {
+  background: var(--color-error-light);
+  color: var(--color-error);
+}
+
+.stats-card-info .stats-icon {
+  background: var(--color-info-light);
+  color: var(--color-info);
+}
+
+.stats-card-secondary .stats-icon {
+  background: var(--color-secondary-light);
+  color: var(--color-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stats-value {
+    font-size: 2rem;
+  }
+  
+  .stats-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  
+  .stats-trend {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-header {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .stats-icon {
+    align-self: flex-start;
+  }
+  
+  .stats-value {
+    font-size: 1.75rem;
+  }
+}

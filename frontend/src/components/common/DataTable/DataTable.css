@@ -1,0 +1,152 @@
+/* DataTable Component Styles */
+.data-table {
+  background: var(--color-background-primary);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.bulk-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  background: var(--color-background-secondary);
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.selection-count {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.bulk-action-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.main-grid {
+  min-height: 400px;
+}
+
+.table-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  justify-content: center;
+}
+
+.table-loading {
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-spinner {
+  padding: var(--spacing-lg);
+  color: var(--color-text-secondary);
+}
+
+.table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  background: var(--color-background-secondary);
+  border-top: 1px solid var(--color-border-primary);
+}
+
+.pagination-info {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.page-size-selector {
+  min-width: 120px;
+}
+
+.page-navigation {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.page-info {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0 var(--spacing-sm);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bulk-actions {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: stretch;
+  }
+  
+  .bulk-action-buttons {
+    justify-content: center;
+  }
+  
+  .table-pagination {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: stretch;
+  }
+  
+  .pagination-controls {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .page-navigation {
+    justify-content: center;
+  }
+  
+  .table-actions {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+}
+
+/* Kendo Grid Overrides */
+.data-table .k-grid {
+  border: none;
+}
+
+.data-table .k-grid-header {
+  background: var(--color-background-secondary);
+  border-bottom: 2px solid var(--color-border-primary);
+}
+
+.data-table .k-grid-header th {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  padding: var(--spacing-md);
+}
+
+.data-table .k-grid-content td {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.data-table .k-grid tbody tr:hover {
+  background: var(--color-background-hover);
+}
+
+.data-table .k-grid .k-selected {
+  background: var(--color-primary-light) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.data-table .k-grid .k-selected:hover {
+  background: var(--color-primary-light) !important;
+}

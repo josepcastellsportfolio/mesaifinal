@@ -1,0 +1,17 @@
+apiVersion: v2
+name: mesaifinal-frontend
+description: A Helm chart for MesaIFinal Frontend application
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - react
+  - frontend
+  - mesaifinal
+home: https://github.com/mesaifinal/frontend
+sources:
+  - https://github.com/mesaifinal/frontend
+maintainers:
+  - name: MesaIFinal Team
+    email: team@mesaifinal.com
+icon: https://mesaifinal.com/icon.png

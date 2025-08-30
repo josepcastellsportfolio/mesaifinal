@@ -51,6 +51,7 @@ class UserSerializer(serializers.ModelSerializer):
     full_name = serializers.CharField(source='get_full_name', read_only=True)
     password = serializers.CharField(write_only=True, validators=[validate_password])
     password_confirm = serializers.CharField(write_only=True)
+    roles = serializers.SerializerMethodField()
     
     class Meta:
         model = User
@@ -70,7 +71,8 @@ class UserSerializer(serializers.ModelSerializer):
             'date_joined',
             'updated_at',
             'password',
-            'password_confirm'
+            'password_confirm',
+            'roles',
         ]
         read_only_fields = [
             'id',
@@ -108,13 +110,18 @@ class UserSerializer(serializers.ModelSerializer):
         password = validated_data.pop('password', None)
         
         for attr, value in validated_data.items():
+            if attr == 'username' and not value:
+                continue
             setattr(instance, attr, value)
-        
+
         if password:
             instance.set_password(password)
         
         instance.save()
         return instance
+
+    def get_roles(self, obj):
+        return [group.name for group in obj.groups.all()]
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):

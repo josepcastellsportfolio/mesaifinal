@@ -1,0 +1,79 @@
+/* TagBadge Component Styles */
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+}
+
+.custom-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.custom-tag-badge.clickable {
+  cursor: pointer;
+}
+
+.custom-tag-badge.clickable:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-sm);
+}
+
+.tag-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  margin-left: var(--spacing-xs);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.remove-button:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+/* Size variants */
+.custom-tag-badge.k-badge-sm {
+  font-size: var(--font-size-xs);
+  padding: 2px var(--spacing-xs);
+}
+
+.custom-tag-badge.k-badge-md {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.custom-tag-badge.k-badge-lg {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tag-name {
+    max-width: 80px;
+  }
+}

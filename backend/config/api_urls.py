@@ -16,11 +16,14 @@ router = DefaultRouter()
 
 # Import and register ViewSets from apps
 from apps.users.views import UserViewSet
-from apps.core.views import CategoryViewSet, ProductViewSet
+from apps.core.views import CategoryViewSet, ProductViewSet, TagViewSet, ReviewViewSet
 
 router.register(r'users', UserViewSet)
 router.register(r'categories', CategoryViewSet)
 router.register(r'products', ProductViewSet)
+router.register(r'tags', TagViewSet)
+router.register(r'reviews', ReviewViewSet)
+
 
 urlpatterns = [
     # JWT Authentication endpoints

@@ -149,9 +149,9 @@ const LoginPage: React.FC = () => {
                         )}
                         
                         {/* Field-specific error messages */}
-                        {loginMutation.error?.errors && (
+                        {loginMutation.error?.message && (
                           <div className="field-errors">
-                            {Object.entries(loginMutation.error.errors).map(([field, errors]) => {
+                            {Object.entries(loginMutation.error.message).map(([field, errors]) => {
                               const errorArray = Array.isArray(errors) ? errors : [errors];
                               return errorArray.map((error, index) => (
                                 <div key={`${field}-${index}`} className="field-error" style={{ 

@@ -155,7 +155,7 @@ class ProductSerializer(serializers.ModelSerializer):
     """
     
     category = CategoryListSerializer(read_only=True)
-    category_id = serializers.IntegerField(write_only=True)
+    category_id = serializers.IntegerField(write_only=True, allow_null=True, required=False)
     tags = TagSerializer(many=True, read_only=True)
     tag_ids = serializers.ListField(
         child=serializers.IntegerField(),
@@ -239,16 +239,19 @@ class ProductSerializer(serializers.ModelSerializer):
         return product
     
     def update(self, instance, validated_data):
-        """Update product with tags."""
+        """Update product with tags and category."""
         tag_ids = validated_data.pop('tag_ids', None)
-        
+        category_id = validated_data.pop('category_id', None)
+
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
-        instance.save()
-        
+
         if tag_ids is not None:
             instance.tags.set(tag_ids)
-        
+
+        instance.category_id = category_id
+
+        instance.save()
         return instance
     
     def get_average_rating(self, obj):

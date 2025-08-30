@@ -1,9 +1,4 @@
-/**
- * Main application layout component with sidebar navigation and header.
- * Uses Telerik UI components for a professional look and responsive design.
- */
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useCurrentUser } from '@/queries/auth.queries';
 import { 
@@ -20,34 +15,60 @@ import {
 import { useAuthStore } from '@/store/auth.store';
 import { useLogout } from '@/queries';
 import { ROUTES, NAVIGATION_ITEMS } from '@/constants';
+import './AppLayout.css';
+
+const MOBILE_BREAKPOINT = 768;
 
 const AppLayout: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  
-  // Auth store and logout mutation
   const { user, setUser, hasAnyRole } = useAuthStore();
   const logoutMutation = useLogout();
-  
-  const [sidebarExpanded, setSidebarExpanded] = useState(true);
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
-  // Helper function to check user role (now using store method)
+  const [sidebarExpanded, setSidebarExpanded] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= MOBILE_BREAKPOINT);
+
+  // Responsive handler
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+      if (window.innerWidth > MOBILE_BREAKPOINT) {
+        setSidebarOpen(false);
+        setSidebarExpanded(true);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Always keep user in store in sync with backend (React Query)
+  const { data: currentUser } = useCurrentUser();
+
+  useEffect(() => {
+    if (currentUser) {
+      setUser(currentUser);
+      console.log('Current user object:', currentUser);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUser]);
+
+  // Only show sidebar for admin/manager
+  const canSeeSidebar = hasAnyRole(['admin', 'manager']);
+
   const checkAnyRole = (requiredRoles: string[]): boolean => {
     return hasAnyRole(requiredRoles);
   };
 
-  // Filter navigation items based on user role
   const filteredNavItems = NAVIGATION_ITEMS.filter(item => 
     !item.roles || checkAnyRole([...item.roles])
   );
 
   const handleNavigation = (path: string) => {
     navigate(path);
+    if (isMobile) setSidebarOpen(false);
   };
-
-const { data: username } = useCurrentUser();
-
 
   const handleLogout = async () => {
     logoutMutation.mutate(undefined, {
@@ -57,7 +78,6 @@ const { data: username } = useCurrentUser();
       },
       onError: (error) => {
         console.error('Logout failed:', error);
-        // Even if logout fails on server, clear local state
         setUser(null);
         navigate(ROUTES.LOGIN);
       }
@@ -65,7 +85,11 @@ const { data: username } = useCurrentUser();
   };
 
   const toggleSidebar = () => {
-    setSidebarExpanded(!sidebarExpanded);
+    if (isMobile) {
+      setSidebarOpen(!sidebarOpen);
+    } else {
+      setSidebarExpanded(!sidebarExpanded);
+    }
   };
 
   // Icon mapping for navigation items
@@ -82,11 +106,11 @@ const { data: username } = useCurrentUser();
   };
 
   const renderSidebarContent = () => (
-    <div className="sidebar-content">
+    <div className={`sidebar-content${isMobile ? ' mobile' : ''}`}>
       {/* Logo Section */}
       <div className="sidebar-header">
         <div className="logo">
-          {sidebarExpanded ? (
+          {(!isMobile && sidebarExpanded) ? (
             <h3>Mesai Final</h3>
           ) : (
             <span>MF</span>
@@ -102,12 +126,12 @@ const { data: username } = useCurrentUser();
               <button
                 className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
                 onClick={() => handleNavigation(item.path)}
-                title={sidebarExpanded ? '' : item.label}
+                title={(!isMobile && sidebarExpanded) ? '' : item.label}
               >
                 <span className={`nav-icon icon-${item.icon}`}>
                   {getIconForItem(item.icon)}
                 </span>
-                {sidebarExpanded && (
+                {(!isMobile && sidebarExpanded) && (
                   <span className="nav-text">{item.label}</span>
                 )}
               </button>
@@ -118,93 +142,117 @@ const { data: username } = useCurrentUser();
     </div>
   );
 
-  const renderHeader = () => (
-    <AppBar>
-      <AppBarSection>
+ const renderHeader = () => (
+  <AppBar>
+    <AppBarSection>
+      {/* Sidebar toggle button always on the left in mobile */}
+      {canSeeSidebar && isMobile && (
         <Button
-          icon="menu"
-          fillMode="flat"
+          fillMode="solid"
+          style={{ background: "#fff", color: "#222", marginRight: 8, fontWeight: 600 }}
           onClick={toggleSidebar}
-          title="Toggle Sidebar"
-        />
-      </AppBarSection>
-      
-      <AppBarSpacer />
-      
-      <AppBarSection>
-        <div className="user-section">
-          <span className="user-name">
-  {user?.first_name} {user?.last_name} {/* o user?.username */}
-</span>
-          <div className="user-menu">
-            <Button
-              fillMode="flat"
-              onClick={() => setUserMenuOpen(!userMenuOpen)}
+          title="Open Sidebar"
+          className="sidebar-toggle-btn"
+        >
+          Menu
+        </Button>
+      )}
+      {/* Dashboard button in mobile */}
+      {isMobile && (
+        <Button
+          fillMode="solid"
+          style={{ background: "#fff", color: "#222", fontWeight: 600 }}
+          onClick={() => navigate(ROUTES.DASHBOARD)}
+          title="Go to Dashboard"
+          className="dashboard-nav-btn"
+        >
+          Dashboard
+        </Button>
+      )}
+    </AppBarSection>
+    <AppBarSpacer />
+    <AppBarSection>
+      <div className="user-section">
+        <span className="user-name">
+          {user?.first_name} {user?.last_name}
+        </span>
+        <div className="user-menu">
+          <Button
+            fillMode="flat"
+            onClick={() => setUserMenuOpen(!userMenuOpen)}
+          >
+            <Avatar
+              type="image"
+              size="small"
             >
-              <Avatar
-                type="image"
-                size="small"
-              >
-                {user?.avatar ? (
-                  <img src={user.avatar} alt={user.full_name} />
-                ) : (
-                  <span>{user?.first_name?.[0]}{user?.last_name?.[0]}</span>
-                )}
-              </Avatar>
-            </Button>
-            
-            {userMenuOpen && (
-              <div className="user-dropdown">
-                <ul>
-                  <li>
-                    <button onClick={() => navigate(ROUTES.PROFILE)}>
-                      Profile
-                    </button>
-                  </li>
-                  <li>
-                    <button onClick={() => navigate(ROUTES.SETTINGS)}>
-                      Settings
-                    </button>
-                  </li>
-                  <li className="divider" />
-                  <li>
-                    <button onClick={handleLogout}>
-                      Logout
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </div>
+              {user?.avatar ? (
+                <img src={user.avatar} alt={user.full_name} />
+              ) : (
+                <span>{user?.first_name?.[0]}{user?.last_name?.[0]}</span>
+              )}
+            </Avatar>
+          </Button>
+          {userMenuOpen && (
+            <div className="user-dropdown">
+              <ul>
+                <li>
+                  <button onClick={() => navigate(ROUTES.PROFILE)}>
+                    Profile
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => navigate(ROUTES.SETTINGS)}>
+                    Settings
+                  </button>
+                </li>
+                <li className="divider" />
+                <li>
+                  <button onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
-      </AppBarSection>
-    </AppBar>
-  );
+      </div>
+    </AppBarSection>
+  </AppBar>
+);
 
   return (
     <div className="app-layout">
-      <Drawer
-        expanded={sidebarExpanded}
-        position="start"
-        mode="push"
-        mini={true}
-        width={250}
-        miniWidth={60}
-        items={[]}
-      >
-        <DrawerContent>
-          {renderSidebarContent()}
-        </DrawerContent>
-      </Drawer>
-      
+      {canSeeSidebar && (
+        <>
+          {/* Desktop sidebar */}
+          {!isMobile && (
+            <Drawer
+              expanded={sidebarExpanded}
+              position="start"
+              mode="push"
+              mini={true}
+              width={250}
+              miniWidth={60}
+              items={[]}
+            >
+              <DrawerContent>
+                {renderSidebarContent()}
+              </DrawerContent>
+            </Drawer>
+          )}
+          {/* Mobile sidebar overlay */}
+          {isMobile && sidebarOpen && (
+            <div className="mobile-sidebar-overlay" onClick={toggleSidebar}>
+              <div className="mobile-sidebar" onClick={e => e.stopPropagation()}>
+                {renderSidebarContent()}
+              </div>
+            </div>
+          )}
+        </>
+      )}
       {/* Main layout content */}
       <div className="app-content">
-        {/* Header */}
-        <header className="app-header">
-          {renderHeader()}
-        </header>
-
-        {/* Main Content */}
+        <header className="app-header">{renderHeader()}</header>
         <main className="app-main">
           <div className="main-content">
             <Outlet />
@@ -216,4 +264,3 @@ const { data: username } = useCurrentUser();
 };
 
 export default AppLayout;
-

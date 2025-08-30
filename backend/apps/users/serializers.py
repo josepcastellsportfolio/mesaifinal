@@ -16,6 +16,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     """Serializer for user profile information."""
     
     full_name = serializers.CharField(source='get_full_name', read_only=True)
+    roles = serializers.SerializerMethodField()
     
     class Meta:
         model = User
@@ -32,7 +33,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'bio',
             'is_active',
             'date_joined',
-            'updated_at'
+            'updated_at',
+            'roles',
         ]
         read_only_fields = [
             'id',
@@ -40,6 +42,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'date_joined',
             'updated_at'
         ]
+
+    def get_roles(self, obj):
+        return [group.name for group in obj.groups.all()]
 
 
 class UserSerializer(serializers.ModelSerializer):

@@ -176,7 +176,7 @@ const DashboardPage: React.FC = () => {
   );
 
   const renderQuickActions = () => (
-    <Card className="dashboard-card">
+    <Card className="dashboard-card quick-actions-card">
       <CardHeader>
         <CardTitle>Quick Actions</CardTitle>
       </CardHeader>

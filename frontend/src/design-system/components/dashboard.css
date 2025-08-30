@@ -45,7 +45,9 @@
   flex-direction: column;
   gap: var(--spacing-section-padding);
   min-height: 0; /* Allows proper flex shrinking */
-  overflow: hidden;
+  max-height: 100vh;
+  overflow-y: auto;
+
 }
 
 .dashboard-sidebar {
@@ -242,18 +244,106 @@
   }
 }
 
-@media (max-width: 480px) {
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-sidebar {
+    order: -1;
+    margin-bottom: var(--spacing-section-padding);
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard-welcome h1 {
+    font-size: var(--heading-h3-size);
+  }
+  .dashboard-welcome p {
+    font-size: var(--body-base-size);
+  }
+  .dashboard-grid {
+    gap: var(--spacing-6);
+  }
+  .dashboard-main,
+  .dashboard-sidebar {
+    gap: var(--spacing-6);
+  }
+  .dashboard-card .k-card-header,
+  .dashboard-card .k-card-body {
+    padding: var(--spacing-card-padding-sm);
+  }
+  .quick-action-btn {
+    padding: var(--spacing-3);
+    font-size: var(--font-size-sm);
+  }
+  .action-icon {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-page {
+    padding: var(--spacing-2);
+  }
+  .dashboard-welcome h1 {
+    font-size: var(--heading-h4-size);
+  }
+  .dashboard-welcome p {
+    font-size: var(--body-small-size);
+  }
+  .dashboard-card {
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+  .dashboard-card .k-card-header,
+  .dashboard-card .k-card-body {
+    padding: var(--spacing-2);
+  }
+  .dashboard-grid {
+    gap: var(--spacing-4);
+  }
+  .dashboard-main,
+  .dashboard-sidebar {
+    gap: var(--spacing-4);
+  }
+  .quick-actions {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2);
+  }
   .quick-action-btn {
     flex-direction: column;
     text-align: center;
-    gap: var(--spacing-2);
+    gap: var(--spacing-1);
+    padding: var(--spacing-2);
+    font-size: var(--font-size-xs);
   }
-
-  .dashboard-card .k-chart {
-    min-height: 250px;
+  .action-icon {
+    font-size: var(--font-size-base);
   }
-
+  .dashboard-card .k-chart,
   .dashboard-card .k-grid {
-    min-height: 250px;
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 400px) {
+  .dashboard-welcome h1 {
+    font-size: var(--heading-h5-size);
+  }
+  .dashboard-card .k-card-header,
+  .dashboard-card .k-card-body {
+    padding: var(--spacing-1);
+  }
+  .quick-action-btn {
+    padding: var(--spacing-1);
+    font-size: var(--font-size-xxs);
+  }
+}
+@media (max-width: 600px) {
+  .dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
   }
 }

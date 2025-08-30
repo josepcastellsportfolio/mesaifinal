@@ -13,17 +13,18 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  min-width: 0; /* Prevents flex item from growing beyond container */
-  margin-left: 0; /* Will be adjusted by Kendo Drawer */
+  min-width: 0;
+  margin-left: 0;
   transition: margin-left 0.3s ease;
 }
 
 .app-header {
-  flex-shrink: 0;
-  z-index: 100;
+    flex-shrink: 0;
+  z-index: 3000; /* Asegura que esté por encima del sidebar overlay */
   border-bottom: 1px solid #e0e0e0;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* Añade esto si no está */
 }
 
 /* Adjust main content based on drawer state */
@@ -131,7 +132,6 @@
   flex: 1;
   padding: 1.5rem;
   overflow-y: auto;
-  background-color: #f8f9fa;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -201,33 +201,66 @@
   background-color: #f8f9fa;
 }
 
+/* Mobile Sidebar Overlay */
+.mobile-sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 2000;
+  display: flex;
+}
+
+.mobile-sidebar {
+  width: 220px;
+  background: #2c3e50;
+  height: 100vh;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  animation: slideInSidebar 0.2s;
+}
+
+@keyframes slideInSidebar {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
-  .user-name {
-    display: none;
-  }
-  
-  .main-content {
-    padding: 1rem;
-  }
-  
-  .sidebar-content {
-    width: 100%;
+  .sidebar-toggle-btn,
+  .dashboard-nav-btn {
+    background: #fff !important;
+    color: #222 !important;
+    font-weight: 600;
+    border-radius: 8px;
+    font-size: 1rem !important;
+    padding: 0 18px;
+    height: 36px;
+    min-width: 90px;
+    margin-right: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #e0e0e0;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    color: black;
+
   }
 }
+  
+
 
 @media (max-width: 480px) {
   .main-content {
     padding: 0.5rem;
   }
-  
   .sidebar-content {
     width: 100% !important;
   }
 }
 
 /* Loading and Error States */
-.loading-container {
+.loading-container,
+.error-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -236,56 +269,18 @@
 }
 
 .error-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  flex-direction: column;
   color: #dc3545;
 }
 
 /* Utility Classes */
-.text-center {
-  text-align: center;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.mb-0 {
-  margin-bottom: 0;
-}
-
-.mb-1 {
-  margin-bottom: 0.5rem;
-}
-
-.mb-2 {
-  margin-bottom: 1rem;
-}
-
-.mb-3 {
-  margin-bottom: 1.5rem;
-}
-
-.mt-0 {
-  margin-top: 0;
-}
-
-.mt-1 {
-  margin-top: 0.5rem;
-}
-
-.mt-2 {
-  margin-top: 1rem;
-}
-
-.mt-3 {
-  margin-top: 1.5rem;
-}
-
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }

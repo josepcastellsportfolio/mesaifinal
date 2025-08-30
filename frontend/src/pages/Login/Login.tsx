@@ -131,47 +131,32 @@ const LoginPage: React.FC = () => {
                     />
 
                     {/* Error Messages */}
-                    {loginMutation.isError && (
-                      <div className="error-container" style={{ marginBottom: '16px' }}>
-                        {/* General error message */}
-                        {loginMutation.error?.message && (
-                          <div className="error-message" style={{ 
-                            color: '#d32f2f', 
-                            marginBottom: '8px', 
-                            padding: '8px', 
-                            backgroundColor: '#ffebee', 
-                            border: '1px solid #ffcdd2', 
-                            borderRadius: '4px',
-                            fontSize: '14px'
-                          }}>
-                            {loginMutation.error.message}
-                          </div>
-                        )}
-                        
-                        {/* Field-specific error messages */}
-                        {loginMutation.error?.message && (
-                          <div className="field-errors">
-                            {Object.entries(loginMutation.error.message).map(([field, errors]) => {
-                              const errorArray = Array.isArray(errors) ? errors : [errors];
-                              return errorArray.map((error, index) => (
-                                <div key={`${field}-${index}`} className="field-error" style={{ 
-                                  color: '#d32f2f', 
-                                  marginBottom: '4px', 
-                                  padding: '4px 8px', 
-                                  backgroundColor: '#ffebee', 
-                                  border: '1px solid #ffcdd2', 
-                                  borderRadius: '4px',
-                                  fontSize: '12px'
-                                }}>
-                                  <strong>{field === 'non_field_errors' ? '' : `${field}: `}</strong>
-                                  {error}
-                                </div>
-                              ));
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    )}
+                  {loginMutation.isError && (
+                    <div className="error-container" style={{ marginBottom: '16px' }}>
+                      <span className="error-message" style={{
+                        color: '#d32f2f',
+                        marginBottom: '8px',
+                        padding: '8px',
+                        backgroundColor: '#ffebee',
+                        border: '1px solid #ffcdd2',
+                        borderRadius: '4px',
+                        fontSize: '14px',
+                        display: 'block'
+                      }}>
+                        {typeof loginMutation.error?.message === 'string'
+                          ? loginMutation.error.message
+                          : Object.entries(loginMutation.error?.message || {})
+                              .map(([field, errors]) => {
+                                const errorArray = Array.isArray(errors) ? errors : [errors];
+                                return errorArray.map(error =>
+                                  field === 'non_field_errors' ? error : `${field}: ${error}`
+                                ).join(' ');
+                              })
+                              .join(' ')
+                        }
+                      </span>
+                    </div>
+                  )}
 
                     {/* Submit Button */}
                     <div className="form-actions">

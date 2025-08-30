@@ -169,9 +169,8 @@ class UserViewSet(viewsets.ModelViewSet):
         Custom action to update current user's profile.
         Allows authenticated users to update their own profile information.
         """
-        profile, created = UserProfile.objects.get_or_create(user=request.user)
-        serializer = self.get_serializer(profile, data=request.data, partial=True)
-        
+        user = request.user
+        serializer = UserProfileSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
